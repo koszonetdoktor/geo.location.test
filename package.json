@@ -1,0 +1,18 @@
+{
+  "name": "geo.location.test",
+  "description": "Show how to interact with the geolocation of the browser, with Cypress.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/koszonetdoktor/geo.location.test.git"
+  },
+  "author": "Gergo Halmi",
+  "homepage": "https://github.com/koszonetdoktor/geo.location.test#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "path": "^0.12.7"
+  }
+}
