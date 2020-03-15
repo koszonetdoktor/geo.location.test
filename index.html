@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <div id="content">
+            <div class="text_coordinate">
+                <span>Latitude: </span>
+                <span id="lat">222222223</span>
+            </div>
+            <div class="text_coordinate">
+                <span>Longitude: </span>
+                <span id=lng>22222222</span>
+            </div>
+            <button data-testid="button-start" onclick="handleStartClick()">Listen</button>
+        </div>
+    </body>
+    <script>
+        let latitude = document.querySelector("#lat")
+        let longitude = document.querySelector("#lng")
+
+        function handleStartClick() {
+            navigator.geolocation.watchPosition(handleSuccess, handleError, {
+                enableHighAccuracy: true,
+                timeout: 15000,
+                maximumAge: 0,
+            })
+        }
+
+        function handleSuccess(locationParams) {
+            latitude.textContent = locationParams.coords.latitude
+            longitude.textContent = locationParams.coords.longitude
+        }
+
+        function handleError(handleError) {
+            console.error(handleError)
+        }
+    </script>
+    <style>
+    body {
+        display: flex;
+        justify-content: center;
+    }
+    .text_coordinate {
+        display: flex;
+        width: 600px;
+        justify-content: space-between;
+        font-size: 32px;
+    }
+    button {
+        font-size: 32px;
+        width: 400px;
+    }
+    </style>
+</html>
