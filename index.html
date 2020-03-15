@@ -10,19 +10,26 @@
                 <span>Longitude: </span>
                 <span id=lng>-</span>
             </div>
-            <button data-testid="button-start" onclick="handleStartClick()">Listen</button>
+            <button data-testid="button-start" onclick="handleStart()">Listen</button>
+            <button data-testid="button-get" onclick="handleGetLocation()">Get</button>
         </div>
     </body>
     <script>
         let latitude = document.querySelector("#lat")
         let longitude = document.querySelector("#lng")
 
-        function handleStartClick() {
-            navigator.geolocation.watchPosition(handleSuccess, handleError, {
-                enableHighAccuracy: true,
-                timeout: 15000,
-                maximumAge: 0,
-            })
+        const options = {
+            enableHighAccuracy: true,
+            timeout: 15000,
+            maximumAge: 0,
+        }
+
+        function handleGetLocation() {
+            navigator.geolocation.getCurrentPosition(handleSuccess, handleError, options)
+        }
+
+        function handleStart() {
+            navigator.geolocation.watchPosition(handleSuccess, handleError, options)
         }
 
         function handleSuccess(locationParams) {

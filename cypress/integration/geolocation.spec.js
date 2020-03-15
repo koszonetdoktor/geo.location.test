@@ -70,5 +70,11 @@ describe("Stab geoLocation", function() {
       }
     });
     cy.get("[data-testid=button-start]").click();
+    cy.window().then($window => {
+      cy.stub($window.navigator.geolocation, "getCurrentPosition", callback => {
+        return callback({ coords: { latitude: 22, longitude: 22 } });
+      });
+      cy.get("[data-testid=button-get]").click();
+    });
   });
 });
